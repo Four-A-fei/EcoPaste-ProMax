@@ -39,14 +39,8 @@ const SHORTCUTS: Shortcut[] = [
   { keys: ["ArrowUp", "/", "ArrowDown"], labelKey: "shortcuts.navigate" },
   { keys: "CmdOrCtrl+F", labelKey: "shortcuts.focusSearch" },
   { keys: "CmdOrCtrl+Q", labelKey: "shortcuts.toggleRange" },
-  {
-    keys: ["ArrowLeft", "/", "ArrowRight"],
-    labelKey: "shortcuts.switchCategory",
-  },
-  {
-    keys: ["Tab", "/", "Shift", "Tab"],
-    labelKey: "shortcuts.switchCustomGroup",
-  },
+  { keys: "Shift+Tab", labelKey: "shortcuts.switchCategory" },
+  { keys: "Tab", labelKey: "shortcuts.switchCustomGroup" },
   { keys: "CmdOrCtrl+N", labelKey: "shortcuts.createGroup" },
   { keys: "CmdOrCtrl+P", labelKey: "shortcuts.pinWindow" },
   { keys: "CmdOrCtrl+K", labelKey: "shortcuts.showShortcuts" },

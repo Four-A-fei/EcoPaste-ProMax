@@ -295,6 +295,10 @@ const List: FC = () => {
       selectGroupOnOpen,
       selectRangeOnOpen,
     } = settings.clipboard.window;
+    clipboardViewState.range = "all";
+    clipboardViewState.category = null;
+    clipboardViewState.groupId = null;
+
     const shouldResetSelection =
       selectRangeOnOpen !== WINDOW_OPEN_SELECTION_PRESERVE ||
       selectCategoryOnOpen !== WINDOW_OPEN_SELECTION_PRESERVE ||

@@ -104,7 +104,7 @@ const GROUP_BUTTON_GAP = 4;
 const GROUP_SEPARATOR_MARGIN = 4;
 
 /**
- * Header 下方的分组筛选栏：内置类型分组 + 自定义分组入口。
+ * Header 下方的分组筛选栏：主分组在左，类型筛选在右。
  */
 const Group: FC = () => {
   const { t } = useTranslation(["clipboard", "common"]);
@@ -196,10 +196,11 @@ const Group: FC = () => {
   }, [visibleCustomGroups.length]);
 
   /**
-   * 切换范围；范围必须始终保留一个选中项。
+   * 切换范围；范围必须始终保留一个选中项，并清空自定义分组筛选。
    */
   const selectRange = (value: ClipboardRange) => {
     clipboardViewState.range = value;
+    clipboardViewState.groupId = null;
   };
 
   /**
@@ -211,10 +212,17 @@ const Group: FC = () => {
   };
 
   /**
-   * 切换到自定义分组；再次点击当前分组时取消。
+   * 切换到自定义分组；再次点击当前分组时回到全部。
    */
   const toggleCustomGroup = (id: string) => {
-    clipboardViewState.groupId = clipboardViewState.groupId === id ? null : id;
+    if (clipboardViewState.groupId === id) {
+      clipboardViewState.groupId = null;
+      clipboardViewState.range = "all";
+      return;
+    }
+
+    clipboardViewState.groupId = id;
+    clipboardViewState.range = "all";
   };
 
   /**
@@ -256,7 +264,7 @@ const Group: FC = () => {
   };
 
   /**
-   * 处理分组栏快捷键：Cmd/Ctrl+Q 切换范围，左右键切分类，Tab / Shift+Tab 仅在可见自定义分组间循环。
+   * 处理分组栏快捷键：Cmd/Ctrl+Q 切换范围，Tab 切主分组，Shift+Tab 切类型筛选。
    */
   const handleKeyDown = (event: KeyboardEvent) => {
     const eventModifierPressed = event.metaKey || event.ctrlKey;
@@ -268,57 +276,39 @@ const Group: FC = () => {
       return;
     }
 
-    if (
-      (event.key === "ArrowLeft" || event.key === "ArrowRight") &&
-      !shouldUseNativeHorizontalNavigation(event)
-    ) {
-      event.preventDefault();
-      selectAdjacentCategory(event.key === "ArrowLeft" ? -1 : 1);
-
-      return;
-    }
-
     if (event.key !== "Tab") return;
 
     event.preventDefault();
 
-    const nextGroupId = selectAdjacentCustomGroup(
-      visibleCustomGroups,
-      groupId,
-      event.shiftKey,
-    );
+    if (event.shiftKey) {
+      selectAdjacentCategory();
+      return;
+    }
 
-    if (!nextGroupId) return;
-
-    toggleCustomGroup(nextGroupId);
+    selectAdjacentPrimaryGroup(visibleCustomGroups, range, groupId);
   };
 
   useKeyboardEvent("keydown", handleKeyDown);
 
   /**
-   * 在全部 / 收藏范围之间循环切换，不影响分类与自定义分组筛选。
+   * 在全部 / 收藏范围之间循环切换，不影响分类筛选。
    */
   const toggleRange = () => {
-    clipboardViewState.range =
-      clipboardViewState.range === "all" ? "favorite" : "all";
+    selectRange(clipboardViewState.range === "all" ? "favorite" : "all");
   };
 
   /**
-   * 按方向键在固定分类序列内循环；未选分类时从方向对应的端点进入。
+   * 在固定分类序列内循环；未选分类时从文本开始。
    */
-  const selectAdjacentCategory = (direction: -1 | 1) => {
+  const selectAdjacentCategory = () => {
     const options = CATEGORY_GROUP_OPTIONS.map((option) => {
       return option.value;
     });
     const currentCategory = clipboardViewState.category;
     const current = currentCategory ? options.indexOf(currentCategory) : -1;
-    const startIndex = direction === 1 ? -1 : options.length;
-    const nextIndex =
-      (current === -1 ? startIndex + direction : current + direction) %
-      options.length;
-    const normalizedIndex = (nextIndex + options.length) % options.length;
+    const nextIndex = (current + 1) % options.length;
 
-    clipboardViewState.category = options[normalizedIndex];
+    clipboardViewState.category = options[nextIndex];
   };
 
   /**
@@ -520,11 +510,9 @@ const Group: FC = () => {
   };
 
   /**
-   * 渲染独立新增按钮；存在溢出菜单时由菜单内新增入口承接。
+   * 渲染独立新增按钮。
    */
   const renderCreateButton = () => {
-    if (overflowCustomGroups.length > 0) return null;
-
     return (
       <Dropdown
         menu={{
@@ -554,7 +542,7 @@ const Group: FC = () => {
    * 渲染范围按钮。
    */
   const renderRangeButton = ({ labelKey, value, icon }: RangeGroupOption) => {
-    const selected = range === value;
+    const selected = !groupId && range === value;
     const nextRange =
       range === "all" ? "favorite" : range === "favorite" ? "all" : void 0;
     const showShortcutHint = nextRange === value;
@@ -628,54 +616,60 @@ const Group: FC = () => {
   return (
     <>
       <div
-        className="flex items-center gap-1 overflow-hidden px-3 pb-2"
+        className="flex items-center justify-between gap-2 overflow-hidden px-3 pb-2"
         data-tauri-drag-region
-        ref={toolbarRef}
       >
-        {RANGE_GROUP_OPTIONS.map(renderRangeButton)}
-        <GroupSeparator />
-        {CATEGORY_GROUP_OPTIONS.map(renderCategoryButton)}
-        <GroupSeparator separatorRef={customGroupAnchorRef} />
+        <div
+          className="flex min-w-0 flex-1 items-center gap-1 overflow-hidden"
+          ref={toolbarRef}
+        >
+          {RANGE_GROUP_OPTIONS.map(renderRangeButton)}
+          <GroupSeparator separatorRef={customGroupAnchorRef} />
 
-        {inlineCustomGroups.length > 0 && (
-          <div className="flex min-w-0 shrink-0 items-center gap-1 overflow-hidden">
-            {inlineCustomGroups.map((record) => {
-              const selected = groupId === record.id;
+          {inlineCustomGroups.length > 0 && (
+            <div className="flex min-w-0 shrink-0 items-center gap-1 overflow-hidden">
+              {inlineCustomGroups.map((record) => {
+                const selected = groupId === record.id;
 
-              return (
-                <Dropdown
-                  key={record.id}
-                  menu={{
-                    items: groupMenuItems,
-                    onClick: handleGroupMenuClick,
-                  }}
-                  tooltip={record.name}
-                  trigger={["contextMenu"]}
-                >
-                  <button
-                    className={cn(GROUP_ICON_BUTTON_CLASS, {
-                      "bg-ant-primary text-ant-light-solid": selected,
-                      "text-ant-secondary hover:bg-ant-fill-tertiary":
-                        !selected,
-                    })}
-                    data-group-id={record.id}
-                    onClick={handleGroupClick}
-                    onContextMenu={handleCustomGroupContextMenu}
-                    type="button"
+                return (
+                  <Dropdown
+                    key={record.id}
+                    menu={{
+                      items: groupMenuItems,
+                      onClick: handleGroupMenuClick,
+                    }}
+                    tooltip={record.name}
+                    trigger={["contextMenu"]}
                   >
-                    <ClipboardGroupIcon
-                      icon={record.icon}
-                      selected={selected}
-                    />
-                  </button>
-                </Dropdown>
-              );
-            })}
-          </div>
-        )}
+                    <button
+                      className={cn(GROUP_ICON_BUTTON_CLASS, {
+                        "bg-ant-primary text-ant-light-solid": selected,
+                        "text-ant-secondary hover:bg-ant-fill-tertiary":
+                          !selected,
+                      })}
+                      data-group-id={record.id}
+                      onClick={handleGroupClick}
+                      onContextMenu={handleCustomGroupContextMenu}
+                      type="button"
+                    >
+                      <ClipboardGroupIcon
+                        icon={record.icon}
+                        selected={selected}
+                      />
+                    </button>
+                  </Dropdown>
+                );
+              })}
+            </div>
+          )}
 
-        {renderMoreButton()}
-        {renderCreateButton()}
+          {renderMoreButton()}
+          {renderCreateButton()}
+        </div>
+
+        <div className="flex shrink-0 items-center gap-1">
+          {CATEGORY_GROUP_OPTIONS.map(renderCategoryButton)}
+        </div>
       </div>
 
       <ClipboardGroupModal
@@ -690,7 +684,7 @@ const Group: FC = () => {
 };
 
 /**
- * 分隔范围、分类、自定义分组三段。
+ * 分隔内置主分组和自定义分组入口。
  */
 const GroupSeparator: FC<GroupSeparatorProps> = (props) => {
   const { separatorRef } = props;
@@ -777,7 +771,7 @@ function commitVisibleCustomGroupCount(
 }
 
 /**
- * 按整条分组栏剩余宽度计算自定义分组可显示数量。
+ * 按左侧主分组栏剩余宽度计算自定义分组可显示数量。
  */
 function computeCustomGroupCapacity(
   toolbar: HTMLDivElement,
@@ -790,7 +784,11 @@ function computeCustomGroupCapacity(
     toolbarRect.left +
     GROUP_SEPARATOR_MARGIN +
     GROUP_BUTTON_GAP;
-  const actionSlotWidth = GROUP_BUTTON_GAP + GROUP_BUTTON_WIDTH;
+  const actionSlotWidth =
+    GROUP_BUTTON_GAP +
+    GROUP_BUTTON_WIDTH +
+    GROUP_BUTTON_GAP +
+    GROUP_BUTTON_WIDTH;
   const availableWidth = Math.max(
     0,
     toolbar.clientWidth - customStart - actionSlotWidth,
@@ -957,45 +955,38 @@ function isCategoryGroup(value: unknown): value is ClipboardCategory {
 }
 
 /**
- * 在可见自定义分组间前后循环；当前未选中分组时，正向取第一个，反向取最后一个。
+ * 在全部、收藏和可见自定义分组间循环。
  */
-function selectAdjacentCustomGroup(
+function selectAdjacentPrimaryGroup(
   groups: ClipboardGroupRecord[],
+  range: ClipboardRange,
   groupId: string | null,
-  reverse: boolean,
 ) {
-  if (groups.length === 0) return null;
-
+  const options = [
+    { type: "range" as const, value: "all" as const },
+    { type: "range" as const, value: "favorite" as const },
+    ...groups.map((record) => {
+      return { id: record.id, type: "custom" as const };
+    }),
+  ];
   const currentIndex = groupId
-    ? groups.findIndex((record) => {
-        return record.id === groupId;
+    ? options.findIndex((option) => {
+        return option.type === "custom" && option.id === groupId;
       })
-    : -1;
+    : options.findIndex((option) => {
+        return option.type === "range" && option.value === range;
+      });
+  const nextIndex = (currentIndex + 1) % options.length;
+  const next = options[nextIndex];
 
-  if (reverse) {
-    if (currentIndex === -1) return groups[groups.length - 1]?.id ?? null;
-
-    return (
-      groups[(currentIndex - 1 + groups.length) % groups.length]?.id ?? null
-    );
+  if (next.type === "custom") {
+    clipboardViewState.groupId = next.id;
+    clipboardViewState.range = "all";
+    return;
   }
 
-  if (currentIndex === -1) return groups[0]?.id ?? null;
-
-  return groups[(currentIndex + 1) % groups.length]?.id ?? null;
-}
-
-/**
- * 判断左右键是否应交给输入控件原生光标导航。
- */
-function shouldUseNativeHorizontalNavigation(event: KeyboardEvent) {
-  const target = event.target;
-  if (!(target instanceof HTMLElement)) return false;
-
-  const tagName = target.tagName.toLowerCase();
-  if (target.isContentEditable) return true;
-
-  return tagName === "input" || tagName === "textarea";
+  clipboardViewState.groupId = null;
+  clipboardViewState.range = next.value;
 }
 
 /**
