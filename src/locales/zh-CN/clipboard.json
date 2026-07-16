@@ -30,6 +30,7 @@
   "groups": {
     "add": "新增分组",
     "all": "全部",
+    "allDates": "全部日期",
     "customIcon": "自定义 SVG",
     "delete": "删除分组",
     "deleteConfirmDescription": "删除「{{group}}」后，该分组会从分组栏移除；已有剪贴板记录会保留，并回到未分组状态。",
@@ -45,6 +46,8 @@
     "more": "更多分组",
     "name": "名称",
     "namePlaceholder": "输入分组名称",
+    "nextMonth": "下个月",
+    "previousMonth": "上个月",
     "removeIcon": "删除自定义图标",
     "text": "文本",
     "uploadSvg": "上传 SVG",

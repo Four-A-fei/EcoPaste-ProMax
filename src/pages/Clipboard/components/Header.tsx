@@ -180,23 +180,23 @@ const Header: FC = () => {
 
   return (
     <div
-      className="flex items-center justify-between p-3 pb-2"
+      className="grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 p-3 pb-2"
       data-tauri-drag-region
     >
       <img alt={t("header.logoAlt")} className="size-5" src="/logo.png" />
 
-      <div className="flex items-center gap-1">
-        <SearchInput
-          allowClear
-          blurToken={searchBlurToken}
-          className="w-40"
-          clearToken={searchClearToken}
-          focusToken={searchFocusToken}
-          onChange={handleKeywordChange}
-          placeholder={t("header.searchPlaceholder")}
-          size="small"
-        />
+      <SearchInput
+        allowClear
+        blurToken={searchBlurToken}
+        className="w-full"
+        clearToken={searchClearToken}
+        focusToken={searchFocusToken}
+        onChange={handleKeywordChange}
+        placeholder={t("header.searchPlaceholder")}
+        size="small"
+      />
 
+      <div className="flex items-center gap-1">
         <Tooltip title={t(pinned ? "header.unpin" : "header.pin")}>
           <CustomIconButton
             icon={

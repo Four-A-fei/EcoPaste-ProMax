@@ -35,6 +35,7 @@
     "installUpdate": "Install update",
     "loadApps": "Load apps",
     "loadAutostart": "Load launch-at-login state",
+    "loadClipboardDates": "Load clipboard dates",
     "loadClipboardGroups": "Load groups",
     "loadClipboardList": "Load list",
     "loadLaunchSource": "Load launch source",

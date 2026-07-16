@@ -27,7 +27,6 @@ import { useKeyboardEvent } from "@/hooks/useKeyboardEvent";
 import { useTauriListen } from "@/hooks/useTauriListen";
 import { clipboardViewState } from "@/stores/clipboardView";
 import type {
-  ClipboardCategory,
   ClipboardGroupIcon as ClipboardGroupIconValue,
   ClipboardGroupInput,
   ClipboardGroupRecord,
@@ -44,12 +43,6 @@ type MoreMenuGroupKey = `group:${string}`;
 interface RangeGroupOption {
   labelKey: string;
   value: ClipboardRange;
-  icon: ClipboardGroupIconValue;
-}
-
-interface CategoryGroupOption {
-  labelKey: string;
-  value: ClipboardCategory;
   icon: ClipboardGroupIconValue;
 }
 
@@ -70,16 +63,6 @@ const RANGE_GROUP_OPTIONS: RangeGroupOption[] = [
     icon: "i-lets-icons:star",
     labelKey: "groups.favorite",
     value: "favorite",
-  },
-];
-
-const CATEGORY_GROUP_OPTIONS: CategoryGroupOption[] = [
-  { icon: "i-lets-icons:file-dock", labelKey: "groups.text", value: "text" },
-  { icon: "i-lets-icons:img-box", labelKey: "groups.image", value: "image" },
-  {
-    icon: "i-lets-icons:folder-file-alt",
-    labelKey: "groups.files",
-    value: "files",
   },
 ];
 
@@ -104,11 +87,11 @@ const GROUP_BUTTON_GAP = 4;
 const GROUP_SEPARATOR_MARGIN = 4;
 
 /**
- * Header 下方的分组筛选栏：主分组在左，类型筛选在右。
+ * 剪贴板窗口左侧主分组栏：全部、收藏、自定义分组与新增入口。
  */
 const Group: FC = () => {
   const { t } = useTranslation(["clipboard", "common"]);
-  const { category, groupId, range } = useSnapshot(clipboardViewState);
+  const { groupId, range } = useSnapshot(clipboardViewState);
 
   const [customGroups, setCustomGroups] = useState<ClipboardGroupRecord[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
@@ -204,14 +187,6 @@ const Group: FC = () => {
   };
 
   /**
-   * 切换分类；再次点击当前分类时取消。
-   */
-  const toggleCategory = (value: ClipboardCategory) => {
-    clipboardViewState.category =
-      clipboardViewState.category === value ? null : value;
-  };
-
-  /**
    * 切换到自定义分组；再次点击当前分组时回到全部。
    */
   const toggleCustomGroup = (id: string) => {
@@ -242,10 +217,6 @@ const Group: FC = () => {
       selectRange(value);
       return;
     }
-
-    if (type === "category" && isCategoryGroup(value)) {
-      toggleCategory(value);
-    }
   };
 
   /**
@@ -264,7 +235,7 @@ const Group: FC = () => {
   };
 
   /**
-   * 处理分组栏快捷键：Cmd/Ctrl+Q 切换范围，Tab 切主分组，Shift+Tab 切类型筛选。
+   * 处理分组栏快捷键：Cmd/Ctrl+Q 切换范围，Tab 切主分组。
    */
   const handleKeyDown = (event: KeyboardEvent) => {
     const eventModifierPressed = event.metaKey || event.ctrlKey;
@@ -276,14 +247,9 @@ const Group: FC = () => {
       return;
     }
 
-    if (event.key !== "Tab") return;
+    if (event.key !== "Tab" || event.shiftKey) return;
 
     event.preventDefault();
-
-    if (event.shiftKey) {
-      selectAdjacentCategory();
-      return;
-    }
 
     selectAdjacentPrimaryGroup(visibleCustomGroups, range, groupId);
   };
@@ -295,20 +261,6 @@ const Group: FC = () => {
    */
   const toggleRange = () => {
     selectRange(clipboardViewState.range === "all" ? "favorite" : "all");
-  };
-
-  /**
-   * 在固定分类序列内循环；未选分类时从文本开始。
-   */
-  const selectAdjacentCategory = () => {
-    const options = CATEGORY_GROUP_OPTIONS.map((option) => {
-      return option.value;
-    });
-    const currentCategory = clipboardViewState.category;
-    const current = currentCategory ? options.indexOf(currentCategory) : -1;
-    const nextIndex = (current + 1) % options.length;
-
-    clipboardViewState.category = options[nextIndex];
   };
 
   /**
@@ -558,34 +510,15 @@ const Group: FC = () => {
   };
 
   /**
-   * 渲染分类按钮。
-   */
-  const renderCategoryButton = ({
-    labelKey,
-    value,
-    icon,
-  }: CategoryGroupOption) => {
-    const selected = category === value;
-
-    return renderFilterButton({
-      icon,
-      label: t(`clipboard:${labelKey}`),
-      selected,
-      type: "category",
-      value,
-    });
-  };
-
-  /**
-   * 渲染单个筛选按钮。
+   * 渲染单个主分组按钮。
    */
   const renderFilterButton = (options: {
     icon: ClipboardGroupIconValue;
     label: string;
     selected: boolean;
     showShortcutHint?: boolean;
-    type: "category" | "range";
-    value: ClipboardCategory | ClipboardRange;
+    type: "range";
+    value: ClipboardRange;
   }) => {
     const { icon, label, selected, showShortcutHint, type, value } = options;
 
@@ -616,60 +549,52 @@ const Group: FC = () => {
   return (
     <>
       <div
-        className="flex items-center justify-between gap-2 overflow-hidden px-3 pb-2"
+        className="flex w-11 shrink-0 flex-col items-center gap-1 overflow-hidden px-3 pb-2"
         data-tauri-drag-region
+        ref={toolbarRef}
       >
-        <div
-          className="flex min-w-0 flex-1 items-center gap-1 overflow-hidden"
-          ref={toolbarRef}
-        >
-          {RANGE_GROUP_OPTIONS.map(renderRangeButton)}
-          <GroupSeparator separatorRef={customGroupAnchorRef} />
+        {RANGE_GROUP_OPTIONS.map(renderRangeButton)}
+        <GroupSeparator separatorRef={customGroupAnchorRef} />
 
-          {inlineCustomGroups.length > 0 && (
-            <div className="flex min-w-0 shrink-0 items-center gap-1 overflow-hidden">
-              {inlineCustomGroups.map((record) => {
-                const selected = groupId === record.id;
+        {inlineCustomGroups.length > 0 && (
+          <div className="flex min-h-0 shrink-0 flex-col items-center gap-1 overflow-hidden">
+            {inlineCustomGroups.map((record) => {
+              const selected = groupId === record.id;
 
-                return (
-                  <Dropdown
-                    key={record.id}
-                    menu={{
-                      items: groupMenuItems,
-                      onClick: handleGroupMenuClick,
-                    }}
-                    tooltip={record.name}
-                    trigger={["contextMenu"]}
+              return (
+                <Dropdown
+                  key={record.id}
+                  menu={{
+                    items: groupMenuItems,
+                    onClick: handleGroupMenuClick,
+                  }}
+                  tooltip={record.name}
+                  trigger={["contextMenu"]}
+                >
+                  <button
+                    className={cn(GROUP_ICON_BUTTON_CLASS, {
+                      "bg-ant-primary text-ant-light-solid": selected,
+                      "text-ant-secondary hover:bg-ant-fill-tertiary":
+                        !selected,
+                    })}
+                    data-group-id={record.id}
+                    onClick={handleGroupClick}
+                    onContextMenu={handleCustomGroupContextMenu}
+                    type="button"
                   >
-                    <button
-                      className={cn(GROUP_ICON_BUTTON_CLASS, {
-                        "bg-ant-primary text-ant-light-solid": selected,
-                        "text-ant-secondary hover:bg-ant-fill-tertiary":
-                          !selected,
-                      })}
-                      data-group-id={record.id}
-                      onClick={handleGroupClick}
-                      onContextMenu={handleCustomGroupContextMenu}
-                      type="button"
-                    >
-                      <ClipboardGroupIcon
-                        icon={record.icon}
-                        selected={selected}
-                      />
-                    </button>
-                  </Dropdown>
-                );
-              })}
-            </div>
-          )}
+                    <ClipboardGroupIcon
+                      icon={record.icon}
+                      selected={selected}
+                    />
+                  </button>
+                </Dropdown>
+              );
+            })}
+          </div>
+        )}
 
-          {renderMoreButton()}
-          {renderCreateButton()}
-        </div>
-
-        <div className="flex shrink-0 items-center gap-1">
-          {CATEGORY_GROUP_OPTIONS.map(renderCategoryButton)}
-        </div>
+        {renderMoreButton()}
+        {renderCreateButton()}
       </div>
 
       <ClipboardGroupModal
@@ -692,7 +617,7 @@ const GroupSeparator: FC<GroupSeparatorProps> = (props) => {
   return (
     <span
       aria-hidden
-      className="mx-1 h-4 w-px shrink-0 bg-ant-split"
+      className="my-1 h-px w-4 shrink-0 bg-ant-split"
       ref={separatorRef}
     />
   );
@@ -771,17 +696,16 @@ function commitVisibleCustomGroupCount(
 }
 
 /**
- * 按左侧主分组栏剩余宽度计算自定义分组可显示数量。
+ * 按左侧主分组栏剩余高度计算自定义分组可显示数量。
  */
 function computeCustomGroupCapacity(
   toolbar: HTMLDivElement,
   customAnchor: HTMLSpanElement,
 ) {
-  const toolbarRect = toolbar.getBoundingClientRect();
   const customRect = customAnchor.getBoundingClientRect();
   const customStart =
-    customRect.right -
-    toolbarRect.left +
+    customRect.bottom -
+    toolbar.getBoundingClientRect().top +
     GROUP_SEPARATOR_MARGIN +
     GROUP_BUTTON_GAP;
   const actionSlotWidth =
@@ -791,7 +715,7 @@ function computeCustomGroupCapacity(
     GROUP_BUTTON_WIDTH;
   const availableWidth = Math.max(
     0,
-    toolbar.clientWidth - customStart - actionSlotWidth,
+    toolbar.clientHeight - customStart - actionSlotWidth,
   );
 
   return Math.max(
@@ -941,15 +865,6 @@ function parseMoreMenuGroupId(key: string) {
  */
 function isRangeGroup(value: unknown): value is ClipboardRange {
   return RANGE_GROUP_OPTIONS.some((option) => {
-    return option.value === value;
-  });
-}
-
-/**
- * 判断字符串是否为分类分组值。
- */
-function isCategoryGroup(value: unknown): value is ClipboardCategory {
-  return CATEGORY_GROUP_OPTIONS.some((option) => {
     return option.value === value;
   });
 }

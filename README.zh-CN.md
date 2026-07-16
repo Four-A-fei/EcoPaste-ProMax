@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="./public/logo.png" alt="EcoPaste" width="96" height="96" />
+  <img src="./public/logo.png" alt="EcoPasteProMax" width="96" height="96" />
 
-  # EcoPaste
+  # EcoPasteProMax
 
   **适用于 macOS 与 Windows 的本地优先剪贴板管理器。**
 
@@ -18,15 +18,15 @@
 
 ## 关于
 
-EcoPaste 是一个开源桌面剪贴板管理器。本仓库是 EcoPaste 的 Rust-First 重构版本：持久化和系统侧能力优先由 Rust 承担，React 前端专注于界面展示与交互。
+EcoPasteProMax 是一个基于 EcoPaste Rust-First 重构版的开源桌面剪贴板管理器：持久化和系统侧能力优先由 Rust 承担，React 前端专注于界面展示与交互。
 
 这次重构的目标是让应用更快、更轻、更易维护，并提供本地存储、SQLite 搜索、原生快捷键、托盘、备份，以及聚焦 macOS 与 Windows 的跨平台体验。
 
 ## 项目状态
 
-当前仓库仍处于 beta 重构阶段（`0.6.0-beta.3`），还不是稳定发布通道。
+当前本地构建版本为 `1.0.1`。
 
-尝试这个版本前，请先备份旧版 EcoPaste 的重要数据。重构版调整了运行架构、设置模型、存储布局和数据库结构；在 beta 阶段，不保证与旧版数据兼容。
+尝试这个版本前，请先备份旧版 EcoPaste 的重要数据。重构版调整了运行架构、设置模型、存储布局和数据库结构；除非明确提供迁移路径，否则不保证与旧版数据兼容。
 
 ## 平台范围
 
@@ -47,9 +47,18 @@ Rust-First 重构版仅支持 macOS 与 Windows。
 - 支持导出和导入 `.ecopastebak` 备份，包括加密备份包。
 - 剪贴板数据、资源缓存和设置均保存在本机。
 
+## 1.0.1 近期更新
+
+- 粘贴面板将“全部”、“收藏”和用户自定义分组移动到软件图标下方的左侧边栏，并保持使用 Tab 在这些分组之间切换。
+- “文本”、“图片”、“文件”筛选移动到右侧，与“更多”按钮区域对齐，并改为使用 Shift+Tab 在取消筛选、文本、图片、文件之间轮换。
+- 面板呼出后默认进入“全部”，顶部搜索框加宽并向左调整，使其在软件图标和固定窗口按钮之间更均衡。
+- 原分组/筛选区域改为日期筛选，下拉后按月显示，有剪贴内容的日期会显示状态点，单选日期后立即生效。
+- 在“全部”状态下，收藏条目会显示右下角状态标记；同时置顶和收藏时，两个标记叠压显示。
+- 设置页“关于”中的支持项改为“黑子特供版”，移除右侧二维码，并让该行高度与其它设置项一致。
+
 ## 架构
 
-EcoPaste 采用 Rust-First 的 Tauri 架构：
+EcoPasteProMax 采用 Rust-First 的 Tauri 架构：
 
 - `src-tauri/src/clipboard/` 负责剪贴板采集、内容识别、写回、来源应用、资源落盘和监听回环抑制。
 - `src-tauri/src/db/` 负责 SQLite 仓储、模型、迁移和 FTS 搜索。
@@ -152,8 +161,8 @@ src/
 
 修改代码前请先阅读 [AGENTS.md](./AGENTS.md)。它是本重构版架构边界、平台范围、编码规范和质量要求的单一真相源。
 
-涉及下个版本的用户可见能力变更时，请同步更新 [RELEASE-NEXT.md](./RELEASE-NEXT.md)。文档内容也应与当前 beta 状态和受支持平台保持一致。
+涉及下个版本的用户可见能力变更时，请同步更新 [RELEASE-NEXT.md](./RELEASE-NEXT.md)。文档内容也应与当前版本状态和受支持平台保持一致。
 
 ## 开源协议
 
-EcoPaste 基于 [Apache License 2.0](./LICENSE) 开源。
+EcoPasteProMax 基于 [Apache License 2.0](./LICENSE) 开源。

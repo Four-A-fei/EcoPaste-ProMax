@@ -1,4 +1,5 @@
 import { useClipboardWindowEditableFocus } from "@/hooks/useClipboardWindowEditableFocus";
+import FilterBar from "./components/FilterBar";
 import Footer from "./components/Footer";
 import Group from "./components/Group";
 import Header from "./components/Header";
@@ -14,9 +15,15 @@ const Clipboard = () => {
     >
       <Header />
 
-      <Group />
+      <div className="flex min-h-0 flex-1">
+        <Group />
 
-      <List />
+        <div className="flex min-w-0 flex-1 flex-col">
+          <FilterBar />
+
+          <List />
+        </div>
+      </div>
 
       <Footer />
     </div>

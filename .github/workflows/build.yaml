@@ -1,0 +1,35 @@
+name: Build Windows App
+
+on:
+  # 允许在 GitHub 网页上手动点击按钮触发打包
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest  # 告诉 GitHub 给我用一台 Windows 电脑
+    steps:
+      - name: 下载代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 安装 Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: 安装 pnpm
+        run: npm install -g pnpm
+
+      - name: 安装前端依赖
+        run: pnpm install
+
+      - name: 开始打包 Tauri 应用
+        run: pnpm tauri build
+
+      - name: 上传打包好的 exe 安装包
+        uses: actions/upload-artifact@v4
+        with:
+          name: EcoPaste-Windows-Installer
+          path: src-tauri/target/release/bundle/nsis/*.exe

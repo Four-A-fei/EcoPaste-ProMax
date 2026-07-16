@@ -43,6 +43,7 @@ export const TAURI_COMMAND = {
   IS_LAUNCHED_VIA_AUTOSTART: "is_launched_via_autostart",
   LIST_ALL_APPS: "list_all_apps",
   LIST_CLIPBOARD_GROUPS: "list_clipboard_groups",
+  LIST_CLIPBOARD_ITEM_DATES: "list_clipboard_item_dates",
   LIST_CLIPBOARD_ITEMS: "list_clipboard_items",
   NOTIFY_WINDOW_READY: "notify_window_ready",
   OPEN_CLIPBOARD_ITEM_LINK: "open_clipboard_item_link",

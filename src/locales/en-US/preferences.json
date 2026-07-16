@@ -1,8 +1,8 @@
 {
   "about": {
     "checkUpdates": "Check for updates",
-    "sponsor": "Sponsor",
-    "sponsorHint": "If EcoPaste helps your workflow, you can support the project.",
+    "sponsor": "Heizi Special Edition",
+    "sponsorHint": "If EcoPaste helps your workflow, shout Heizi forever!",
     "sponsorQrAlt": "Sponsor QR code"
   },
   "backup": {
@@ -151,8 +151,8 @@
           "title": "GitHub"
         },
         "sponsor": {
-          "description": "If EcoPaste helps your workflow, you can support the project.",
-          "title": "Sponsor"
+          "description": "If EcoPaste helps your workflow, shout Heizi forever!",
+          "title": "Heizi Special Edition"
         }
       },
       "actions": {

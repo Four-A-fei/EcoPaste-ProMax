@@ -846,6 +846,16 @@ export const listClipboardItems = (query: ClipboardItemQuery) => {
 };
 
 /**
+ * 读取存在剪贴板记录的本地日期列表，用于日期筛选月历状态点。
+ */
+export const listClipboardItemDates = () => {
+  return call<string[]>(
+    TAURI_COMMAND.LIST_CLIPBOARD_ITEM_DATES,
+    "commands:labels.loadClipboardDates",
+  );
+};
+
+/**
  * 列出自定义剪贴板分组；隐藏态由调用方按场景决定是否过滤。
  */
 export const listClipboardGroups = () => {

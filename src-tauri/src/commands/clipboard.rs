@@ -17,6 +17,7 @@ use crate::clipboard::{
 use crate::core::{AppError, Result};
 use crate::db::items::{
     clear_items, find_item_by_id, find_item_for_list_by_id, increment_item_use_count,
+    list_item_dates,
 };
 use crate::db::models::{
     ClipboardAction, ClipboardApp, ClipboardGroup, ClipboardItem, ClipboardItemPage,
@@ -475,6 +476,14 @@ pub async fn list_clipboard_items(
         total,
         has_more,
     })
+}
+
+/// 返回有剪贴板记录的本地日期列表，供日期筛选月历渲染状态点。
+#[tauri::command]
+pub async fn list_clipboard_item_dates(db: State<'_, DatabaseState>) -> Result<Vec<String>> {
+    let pool = db.pool().await;
+
+    list_item_dates(&pool).await
 }
 
 /// 单条查询命令：监听到 `clipboard://updated` 后前端按 id 拉单条，

@@ -157,6 +157,21 @@ pub async fn query_items_page(
     Ok((items, total))
 }
 
+/// 返回按本地日期归并后存在剪贴板记录的日期列表，格式 `YYYY-MM-DD`。
+pub async fn list_item_dates(pool: &SqlitePool) -> Result<Vec<String>> {
+    let dates = sqlx::query_scalar::<_, String>(
+        "SELECT DISTINCT date(created_at, 'localtime') AS created_date \
+         FROM clipboard_items \
+         WHERE date(created_at, 'localtime') IS NOT NULL \
+         ORDER BY created_date DESC",
+    )
+    .fetch_all(pool)
+    .await
+    .context("failed to list clipboard item dates")?;
+
+    Ok(dates)
+}
+
 /// 按 `id` 查找单条记录，不存在时返回 `None`。
 pub async fn find_item_by_id(pool: &SqlitePool, id: &str) -> Result<Option<ClipboardItem>> {
     let mut qb: QueryBuilder<Sqlite> = QueryBuilder::new(SELECT_ITEM);
@@ -548,6 +563,10 @@ fn push_filter_clauses(
         qb.push(" AND clipboard_items.is_pinned = ")
             .push_bind(pinned);
     }
+    if let Some(date) = q.date.as_deref().filter(|value| !value.trim().is_empty()) {
+        qb.push(" AND date(clipboard_items.created_at, 'localtime') = ")
+            .push_bind(date.to_owned());
+    }
 }
 
 #[cfg(test)]
@@ -780,6 +799,26 @@ mod tests {
             ..Default::default()
         };
         assert_eq!(ids(&query_items(&pool, &q).await.unwrap()), ["grouped"]);
+    }
+
+    #[tokio::test]
+    async fn query_filters_by_local_date_and_lists_dates() {
+        let pool = memory_pool().await;
+        let mut early = sample_item("early");
+        early.created_at = DateTime::from_timestamp(1_800_000_000, 0).unwrap();
+        let mut late = sample_item("late");
+        late.created_at = DateTime::from_timestamp(1_800_172_800, 0).unwrap();
+        insert_item(&pool, &early).await.unwrap();
+        insert_item(&pool, &late).await.unwrap();
+
+        let dates = list_item_dates(&pool).await.unwrap();
+        assert_eq!(dates.len(), 2);
+
+        let q = ClipboardItemQuery {
+            date: dates.first().cloned(),
+            ..Default::default()
+        };
+        assert_eq!(ids(&query_items(&pool, &q).await.unwrap()), ["late"]);
     }
 
     #[tokio::test]

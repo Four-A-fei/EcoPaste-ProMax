@@ -302,6 +302,7 @@ export const useClipboardItems = (query: ClipboardItemQuery) => {
 
   useEffect(() => {
     queryRef.current = {
+      date: query.date,
       favorite: query.favorite,
       group: query.group,
       groupId: query.groupId,
@@ -314,6 +315,7 @@ export const useClipboardItems = (query: ClipboardItemQuery) => {
   }, [
     resetAndReload,
     query.favorite,
+    query.date,
     query.group,
     query.groupId,
     query.keyword,

@@ -1,8 +1,8 @@
 {
   "about": {
     "checkUpdates": "检查更新",
-    "sponsor": "赞赏支持",
-    "sponsorHint": "如果 EcoPaste 帮到了你，可以给项目一点支持。",
+    "sponsor": "黑子特供版",
+    "sponsorHint": "如果 EcoPaste 帮到了你，可以大喊一声黑子万岁！",
     "sponsorQrAlt": "赞赏二维码"
   },
   "backup": {
@@ -151,8 +151,8 @@
           "title": "GitHub"
         },
         "sponsor": {
-          "description": "如果 EcoPaste 帮到了你，可以给项目一点支持。",
-          "title": "赞赏支持"
+          "description": "如果 EcoPaste 帮到了你，可以大喊一声黑子万岁！",
+          "title": "黑子特供版"
         }
       },
       "actions": {

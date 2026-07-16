@@ -35,6 +35,7 @@
     "installUpdate": "安装更新",
     "loadApps": "加载应用",
     "loadAutostart": "读取开机启动状态",
+    "loadClipboardDates": "加载剪贴板日期",
     "loadClipboardGroups": "加载分组",
     "loadClipboardList": "加载列表",
     "loadLaunchSource": "读取启动来源",

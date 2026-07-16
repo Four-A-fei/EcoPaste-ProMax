@@ -214,6 +214,8 @@ pub struct ClipboardItemQuery {
     pub group_id: Option<String>,
     pub favorite: Option<bool>,
     pub pinned: Option<bool>,
+    /// 本地日期筛选，格式 `YYYY-MM-DD`；Rust/SQLite 按本机 localtime 计算。
+    pub date: Option<String>,
     /// 列表顶部 Tab 过滤（前端只需传这一个；Rust 侧翻译成 kind / favorite）。
     /// 显式设置时覆盖 `kind` / `favorite`；为 None 时走显式字段（保留给单测）。
     pub group: Option<ClipboardGroupFilter>,
@@ -241,6 +243,7 @@ impl Default for ClipboardItemQuery {
             group_id: None,
             favorite: None,
             pinned: None,
+            date: None,
             group: None,
             keyword: None,
             sort: ClipboardItemSort::UpdatedAt,

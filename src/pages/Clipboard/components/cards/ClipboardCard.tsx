@@ -14,6 +14,8 @@ import ImageCard from "./ImageCard";
 import NoteContentSwitcher from "./NoteContentSwitcher";
 import TextCard from "./TextCard";
 
+type StatusIndicator = "favorite" | "pinned" | "sensitive";
+
 interface ClipboardCardProps {
   item: ClipboardItem;
   isSelected?: boolean;
@@ -82,7 +84,8 @@ const ClipboardCard: FC<ClipboardCardProps> = (props) => {
   const typeLabel = t(`types.${typeKey}`);
   const body = renderBody(item, isLinkActive, onOpenLink);
   const showSensitiveIndicator = item.isSensitive && item.kind === "text";
-  const showStatusIndicators = item.isPinned || showSensitiveIndicator;
+  const showStatusIndicators =
+    item.isFavorite || item.isPinned || showSensitiveIndicator;
 
   const handleDragStart = async (event: DragEvent) => {
     event.preventDefault();
@@ -182,7 +185,11 @@ const ClipboardCard: FC<ClipboardCardProps> = (props) => {
         body
       )}
       {showStatusIndicators
-        ? renderStatusIndicators(item.isPinned, showSensitiveIndicator)
+        ? renderStatusIndicators(
+            item.isFavorite,
+            item.isPinned,
+            showSensitiveIndicator,
+          )
         : null}
     </div>
   );
@@ -191,17 +198,52 @@ const ClipboardCard: FC<ClipboardCardProps> = (props) => {
 /**
  * 渲染卡片右下角的状态水印；仅表达状态，不参与交互。
  */
-function renderStatusIndicators(isPinned: boolean, isSensitive: boolean) {
+function renderStatusIndicators(
+  isFavorite: boolean,
+  isPinned: boolean,
+  isSensitive: boolean,
+) {
+  const indicators: StatusIndicator[] = [
+    isFavorite ? "favorite" : null,
+    isPinned ? "pinned" : null,
+    isSensitive ? "sensitive" : null,
+  ].filter((item): item is StatusIndicator => {
+    return item !== null;
+  });
+
   return (
-    <div className="pointer-events-none absolute right-2 bottom-2 flex items-end gap-1 text-ant-quaternary">
-      {isPinned ? (
-        <i aria-hidden="true" className="i-ph:push-pin-bold size-5" />
-      ) : null}
-      {isSensitive ? (
-        <i aria-hidden="true" className="i-lucide:key-round size-5" />
-      ) : null}
+    <div className="pointer-events-none absolute right-2 bottom-2 h-6 w-10 text-ant-quaternary">
+      {indicators.map((indicator, index) => {
+        const offsetIndex = indicators.length - index - 1;
+
+        return (
+          <i
+            aria-hidden="true"
+            className={cn(
+              resolveStatusIndicatorIcon(indicator),
+              resolveStatusIndicatorOffset(offsetIndex),
+              "absolute size-5",
+            )}
+            key={indicator}
+          />
+        );
+      })}
     </div>
   );
+}
+
+function resolveStatusIndicatorIcon(indicator: StatusIndicator) {
+  if (indicator === "favorite") return "i-lucide:star";
+  if (indicator === "pinned") return "i-ph:push-pin-bold";
+
+  return "i-lucide:key-round";
+}
+
+function resolveStatusIndicatorOffset(index: number) {
+  if (index === 0) return "right-0 bottom-0";
+  if (index === 1) return "right-1 bottom-1";
+
+  return "right-2 bottom-2";
 }
 
 const renderBody = (

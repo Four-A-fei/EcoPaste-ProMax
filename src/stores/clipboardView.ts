@@ -3,6 +3,7 @@ import type { ClipboardCategory, ClipboardRange } from "@/types/clipboard";
 
 interface ClipboardViewState {
   category: ClipboardCategory | null;
+  date: string | null;
   keyword: string;
   groupId: string | null;
   range: ClipboardRange;
@@ -17,6 +18,7 @@ interface ClipboardViewState {
  */
 export const clipboardViewState = proxy<ClipboardViewState>({
   category: null,
+  date: null,
   groupId: null,
   keyword: "",
   range: "all",

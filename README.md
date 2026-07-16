@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="./public/logo.png" alt="EcoPaste" width="96" height="96" />
+  <img src="./public/logo.png" alt="EcoPasteProMax" width="96" height="96" />
 
-  # EcoPaste
+  # EcoPasteProMax
 
   **A local-first clipboard manager for macOS and Windows.**
 
@@ -18,15 +18,15 @@
 
 ## About
 
-EcoPaste is an open-source desktop clipboard manager. This repository is the Rust-first refactor of EcoPaste: durable behavior lives in Rust, while the React frontend focuses on rendering and interaction.
+EcoPasteProMax is an open-source desktop clipboard manager based on the Rust-first EcoPaste refactor: durable behavior lives in Rust, while the React frontend focuses on rendering and interaction.
 
 The rewrite is designed for a faster, lighter, and more maintainable app with local storage, SQLite search, native shortcuts, tray integration, backup support, and a focused cross-platform surface for macOS and Windows.
 
 ## Project Status
 
-This repository is currently a beta refactor (`0.6.0-beta.3`). It is not a stable release channel yet.
+The current local build version is `1.0.1`.
 
-Before trying this version, back up important data from any older EcoPaste installation. The refactor changes the runtime architecture, settings model, storage layout, and database schema, so legacy data compatibility is not guaranteed during the beta period.
+Before trying this version, back up important data from any older EcoPaste installation. The refactor changes the runtime architecture, settings model, storage layout, and database schema, so legacy data compatibility is not guaranteed unless a migration path is explicitly provided.
 
 ## Platform Scope
 
@@ -47,9 +47,18 @@ Linux support from the legacy EcoPaste app has been dropped in this refactor, an
 - Export and import `.ecopastebak` backups, including encrypted backup containers.
 - Keep clipboard data, resources, and settings local to your machine.
 
+## Recent 1.0.1 Updates
+
+- The clipboard panel now places All, Favorites, and custom groups in a left sidebar under the app icon, with Tab cycling through those groups.
+- Content type filters are right-aligned with the More button area, and Shift+Tab cycles through no filter, text, image, and files.
+- The panel opens on All by default, and the top search field is wider and better balanced between the app icon and pinned-window control.
+- The previous group/filter strip is now a single-date filter with month navigation and marked days when clipboard content exists.
+- Favorite items now show a bottom-right status mark in the All view, stacking with the pinned mark when both states apply.
+- About now shows the Heizi special edition support row without the QR code, and the row height matches the other settings rows.
+
 ## Architecture
 
-EcoPaste uses a Rust-first Tauri architecture:
+EcoPasteProMax uses a Rust-first Tauri architecture:
 
 - `src-tauri/src/clipboard/` owns clipboard capture, content detection, writeback, source apps, resource storage, and loop suppression.
 - `src-tauri/src/db/` owns SQLite repositories, models, migrations, and FTS search.
@@ -152,8 +161,8 @@ src/
 
 Read [AGENTS.md](./AGENTS.md) before changing code. It is the source of truth for this refactor's architecture, platform scope, coding conventions, and quality expectations.
 
-For user-visible feature changes in the next release, update [RELEASE-NEXT.md](./RELEASE-NEXT.md). Keep documentation aligned with the current beta status and supported platforms.
+For user-visible feature changes in the next release, update [RELEASE-NEXT.md](./RELEASE-NEXT.md). Keep documentation aligned with the current version status and supported platforms.
 
 ## License
 
-EcoPaste is licensed under the [Apache License 2.0](./LICENSE).
+EcoPasteProMax is licensed under the [Apache License 2.0](./LICENSE).

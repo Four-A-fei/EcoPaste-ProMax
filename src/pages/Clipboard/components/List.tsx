@@ -103,7 +103,7 @@ const List: FC = () => {
 
   const snapshot = useSnapshot(clipboardViewState);
   const settings = useSnapshot(settingsState);
-  const { category, keyword, groupId, range } = snapshot;
+  const { category, date, keyword, groupId, range } = snapshot;
   const autoPaste = settings.clipboard.content.autoPaste;
   const middleClick = settings.clipboard.content.middleClick;
   const display = settings.clipboard.display;
@@ -132,6 +132,7 @@ const List: FC = () => {
     removeItemById,
     total,
   } = useClipboardItems({
+    date: date ?? void 0,
     favorite: range === "favorite" ? true : void 0,
     groupId: groupId ?? void 0,
     keyword,
@@ -297,6 +298,7 @@ const List: FC = () => {
     } = settings.clipboard.window;
     clipboardViewState.range = "all";
     clipboardViewState.category = null;
+    clipboardViewState.date = null;
     clipboardViewState.groupId = null;
 
     const shouldResetSelection =

@@ -92,6 +92,7 @@ pub fn run() {
             commands::restart_as_admin,
             commands::read_clipboard,
             commands::list_clipboard_items,
+            commands::list_clipboard_item_dates,
             commands::open_external_url,
             commands::list_clipboard_groups,
             commands::create_clipboard_group,

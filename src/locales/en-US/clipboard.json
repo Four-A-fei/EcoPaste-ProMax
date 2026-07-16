@@ -30,6 +30,7 @@
   "groups": {
     "add": "New group",
     "all": "All",
+    "allDates": "All dates",
     "customIcon": "Custom SVG",
     "delete": "Delete group",
     "deleteConfirmDescription": "After deleting \"{{group}}\", the group will be removed from the group bar. Existing clipboard records will be kept and moved back to an ungrouped state.",
@@ -45,6 +46,8 @@
     "more": "More groups",
     "name": "Name",
     "namePlaceholder": "Enter group name",
+    "nextMonth": "Next month",
+    "previousMonth": "Previous month",
     "removeIcon": "Remove custom icon",
     "text": "Text",
     "uploadSvg": "Upload SVG",
