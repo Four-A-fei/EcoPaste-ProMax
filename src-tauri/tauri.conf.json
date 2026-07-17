@@ -41,7 +41,7 @@
   "bundle": {
     "active": true,
     "copyright": "Copyright 2026 ayangweb",
-    "createUpdaterArtifacts": true,
+    "createUpdaterArtifacts": false,
     "fileAssociations": [
       {
         "description": "EcoPasteProMax history backup",
@@ -71,7 +71,7 @@
   "identifier": "com.ayangweb.eco-paste",
   "plugins": {
     "updater": {
-      "active": true,
+      "active": false,
       "endpoints": ["https://releases.ecopaste.cn/update?channel=stable"],
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEMzODU3OTNCRkJCNkE0RDMKUldUVHBMYjdPM21GdytQWngvTjR0MEc0dmRiMldaU2ptNkdrNSt4QkZuNkNOOFkxcWlIZ214ZisK",
       "windows": {
