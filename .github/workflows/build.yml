@@ -26,7 +26,7 @@ jobs:
         run: pnpm install
 
       - name: 开始打包 Tauri 应用
-        run: pnpm tauri build
+        run: export TAURI_SIGNING_PRIVATE_KEY='dW50cnVzdGVkIGNvbW1lbnQ6IHJzaWduIGVuY3J5cHRlZCBzZWNyZXQga2V5ClJXUlRZMEl5WXBBRVRvbDF4QXQ0OU43QWNVeGtSb09PamlqbnJhQUtodzJ3dlJteHFrb0FBQkFBQUFBQUFBQUFBQUlBQUFBQXJ5UEZua0I5d0x2Qk9zTEJtM1hzNUZvcDFydGN5QWliTVBQQVJFT2FoOXVNWW5odXdPbDdVc3AwQWNwYjhINXh2RkJ1V2FzcnVPQ1pET3NwL1p5SHkzWkJQbWJrcmw0MUYyVDZjb1lnc1lLc1haODZ0MjZiT0JwRmxJVzMyZUhwdnlOS2g4Nm0yUzA9Cg==%' & pnpm tauri build
 
       - name: 上传打包好的 exe 安装包
         uses: actions/upload-artifact@v4
