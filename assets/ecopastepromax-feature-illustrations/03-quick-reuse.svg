@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+    <defs>
+      <marker id="arrow" markerWidth="14" markerHeight="14" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+        <path d="M2 2 L10 6 L2 10" fill="none" stroke="#e07b25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+      <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="1" seed="7"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    </defs>
+    <rect width="1600" height="900" fill="#fff"/>
+    <g filter="url(#wobble)">
+      <path d="M264 240 C398 210 552 222 684 256 C660 374 662 488 690 610 C530 648 370 632 240 598 C270 477 279 356 264 240Z" fill="none" stroke="#111" stroke-width="7"/>
+      <path d="M330 336 C445 314 543 328 610 348" stroke="#111" stroke-width="5" fill="none"/>
+      <path d="M330 438 C446 420 554 432 617 456" stroke="#111" stroke-width="5" fill="none"/>
+      <path d="M808 524 C870 456 932 442 1000 486 C1080 536 1148 522 1218 446" stroke="#e07b25" stroke-width="9" fill="none" stroke-linecap="round" marker-end="url(#arrow)"/>
+      <path d="M1194 214 C1328 184 1450 204 1504 274 C1474 411 1478 526 1510 672 C1372 716 1222 706 1112 656 C1134 520 1140 370 1194 214Z" fill="none" stroke="#111" stroke-width="7"/>
+      <path d="M1226 324 C1328 304 1402 314 1450 336" stroke="#111" stroke-width="5" fill="none"/>
+      <path d="M1222 440 C1322 422 1408 434 1458 460" stroke="#111" stroke-width="5" fill="none"/>
+      <g transform="translate(720 430) scale(1.05)" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M8 24 C23 -4 78 -9 99 20 C122 52 105 111 70 124 C34 138 -5 117 -13 82 C-22 52 -8 36 8 24Z" fill="#111"/>
+    <circle cx="35" cy="52" r="7" fill="#fff" stroke="none"/>
+    <circle cx="72" cy="49" r="7" fill="#fff" stroke="none"/>
+    <path d="M82 58 C126 52 146 36 164 18"/><path d="M18 60 C-12 82 -32 104 -44 132"/>
+    <path d="M28 122 C20 153 20 178 10 204"/>
+    <path d="M70 124 C80 154 84 176 96 201"/>
+  </g>
+      <path d="M714 650 C758 626 818 626 862 654 C812 682 754 682 714 650Z" fill="none" stroke="#111" stroke-width="5"/>
+      <text x="292" y="694" transform="rotate(0 292 694)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">历史内容</text><text x="1240" y="712" transform="rotate(0 1240 712)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">目标应用</text>
+      <g transform="translate(594 204) rotate(-2)">
+    <path d="M0 0 C48 -8 124 -3 178 4 C174 38 171 74 176 105 C116 114 48 106 -8 102 C-2 70 5 33 0 0Z" fill="none" stroke="#d33b2f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="18" y="62" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#d33b2f">复制 / 粘贴</text>
+  </g>
+      <text x="910" y="420" transform="rotate(-4 910 420)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="28" fill="#e07b25" letter-spacing="0">拖出</text>
+    </g>
+  </svg>

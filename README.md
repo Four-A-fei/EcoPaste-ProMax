@@ -34,18 +34,87 @@ The Rust-first refactor supports macOS and Windows only.
 
 Linux support from the legacy EcoPaste app has been dropped in this refactor, and there are no current plans to support Linux again. Please use the legacy release line if you need Linux support.
 
-## Features
+## Feature Tour
 
-- Capture clipboard history for plain text, HTML, RTF, images, files, and folders.
-- Search clipboard content and notes with SQLite FTS5.
-- Filter history by source application and content type.
-- Protect sensitive content by skipping high-confidence secrets such as private keys, service tokens, AWS keys, and JWTs.
-- Preview text, images, and files in a dedicated preview window.
-- Paste, copy, copy as plain text, reveal files, open links, add notes, pin, favorite, delete, and drag items out to other apps.
-- Organize history with favorites, pinned items, notes, custom groups, and configurable item actions.
-- Tune capture order, size limits, retention, display density, list sorting, and window behavior.
-- Export and import `.ecopastebak` backups, including encrypted backup containers.
-- Keep clipboard data, resources, and settings local to your machine.
+### Clipboard Capture
+
+EcoPasteProMax automatically captures clipboard content such as plain text, HTML, RTF, images, files, and folders, then keeps the history local so it can be found and reused later.
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/01-clipboard-capture.svg" alt="Clipboard capture illustration" width="720" />
+</p>
+
+### Search and Filtering
+
+History supports SQLite FTS5 full-text search across clipboard content and notes. Results can also be narrowed by source app, content type, custom group, favorite state, and date.
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/02-search-filter.svg" alt="Search and filtering illustration" width="720" />
+</p>
+
+### Quick Reuse
+
+Records can be pasted, copied, copied as plain text, opened as links, revealed in the file system, or dragged out to other apps, so reusable content stays close at hand.
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/03-quick-reuse.svg" alt="Quick reuse illustration" width="720" />
+</p>
+
+### Content Management
+
+Favorites, pinned items, notes, custom groups, and configurable quick actions help separate temporary history from frequently used or important material.
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/04-content-management.svg" alt="Content management illustration" width="720" />
+</p>
+
+### Dedicated Preview
+
+Text, image, and file records can be inspected in a dedicated preview window before reuse, reducing accidental selection and repeated file opening.
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/05-preview.svg" alt="Dedicated preview illustration" width="720" />
+</p>
+
+### Privacy and Safety
+
+EcoPasteProMax detects and skips high-confidence sensitive content such as private keys, service tokens, AWS keys, and JWTs, reducing the risk of writing secrets into history.
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/06-privacy-security.svg" alt="Privacy and safety illustration" width="720" />
+</p>
+
+### Window and Shortcut Experience
+
+The clipboard panel can be opened with a shortcut. The current panel places All, Favorites, and custom groups in a left sidebar, while keeping Tab and Shift+Tab keyboard filtering flows.
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/07-window-shortcuts.svg" alt="Window and shortcut illustration" width="720" />
+</p>
+
+### Date Filtering
+
+Date filtering shows a month view with markers on days that contain clipboard records. Selecting a day immediately filters the history for that date.
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/08-date-filter.svg" alt="Date filtering illustration" width="720" />
+</p>
+
+### Backup and Migration
+
+EcoPasteProMax can export and import `.ecopastebak` backup files, including encrypted backups, so important data can be kept across reinstalls, migrations, or recovery.
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/09-backup-migration.svg" alt="Backup and migration illustration" width="720" />
+</p>
+
+### Settings and Localization
+
+Capture order, size limits, retention, display density, list sorting, window behavior, theme, language, and system entry points can be tuned to match each user's workflow.
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/10-settings-localization.svg" alt="Settings and localization illustration" width="720" />
+</p>
 
 ## Recent 1.0.1 Updates
 

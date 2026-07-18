@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+    <defs>
+      <marker id="arrow" markerWidth="14" markerHeight="14" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+        <path d="M2 2 L10 6 L2 10" fill="none" stroke="#e07b25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+      <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="1" seed="7"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    </defs>
+    <rect width="1600" height="900" fill="#fff"/>
+    <g filter="url(#wobble)">
+      <path d="M268 228 C520 178 842 186 1090 234 C1056 386 1062 536 1104 682 C836 732 508 728 246 676 C282 512 288 370 268 228Z" fill="none" stroke="#111" stroke-width="8"/>
+      <path d="M326 306 C496 270 712 284 896 324" stroke="#111" stroke-width="5" fill="none"/>
+      <path d="M330 444 C470 416 628 424 748 456" stroke="#111" stroke-width="5" fill="none"/>
+      <rect x="866" y="376" width="146" height="108" rx="18" fill="none" stroke="#111" stroke-width="5" transform="rotate(3 939 430)"/>
+      <circle cx="1188" cy="388" r="124" fill="none" stroke="#111" stroke-width="9"/>
+      <path d="M1282 480 C1344 552 1392 606 1458 686" stroke="#111" stroke-width="12" fill="none" stroke-linecap="round"/>
+      <g transform="translate(1010 570) scale(0.9)" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M8 24 C23 -4 78 -9 99 20 C122 52 105 111 70 124 C34 138 -5 117 -13 82 C-22 52 -8 36 8 24Z" fill="#111"/>
+    <circle cx="35" cy="52" r="7" fill="#fff" stroke="none"/>
+    <circle cx="72" cy="49" r="7" fill="#fff" stroke="none"/>
+    <path d="M82 58 C126 52 146 36 164 18"/><path d="M18 60 C-12 82 -32 104 -44 132"/>
+    <path d="M28 122 C20 153 20 178 10 204"/>
+    <path d="M70 124 C80 154 84 176 96 201"/>
+  </g>
+      <path d="M796 508 C902 472 1000 438 1062 408" fill="none" stroke="#e07b25" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+      <text x="376" y="600" transform="rotate(0 376 600)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">原记录</text><text x="1132" y="254" transform="rotate(0 1132 254)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#d33b2f" letter-spacing="0">先看一眼</text><text x="854" y="526" transform="rotate(-2 854 526)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="28" fill="#2f6fd3" letter-spacing="0">文本 / 图片 / 文件</text>
+    </g>
+  </svg>

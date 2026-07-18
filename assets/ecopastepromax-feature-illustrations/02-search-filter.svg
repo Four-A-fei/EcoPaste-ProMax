@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+    <defs>
+      <marker id="arrow" markerWidth="14" markerHeight="14" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+        <path d="M2 2 L10 6 L2 10" fill="none" stroke="#e07b25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+      <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="1" seed="7"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    </defs>
+    <rect width="1600" height="900" fill="#fff"/>
+    <g filter="url(#wobble)">
+      <path d="M256 196 C461 164 704 178 906 205 C884 368 887 538 917 700 C675 738 442 731 230 694 C259 531 267 356 256 196Z" fill="none" stroke="#111" stroke-width="7"/>
+      <path d="M318 300 C450 282 606 292 750 312" stroke="#111" stroke-width="5" fill="none"/>
+      <path d="M306 428 C496 402 680 418 827 446" stroke="#111" stroke-width="5" fill="none"/>
+      <path d="M320 560 C474 542 660 552 820 582" stroke="#111" stroke-width="5" fill="none"/>
+      <circle cx="1005" cy="328" r="122" fill="none" stroke="#111" stroke-width="9"/>
+      <path d="M1088 414 C1165 494 1212 552 1288 628" stroke="#111" stroke-width="12" fill="none" stroke-linecap="round"/>
+      <g transform="translate(1015 505) scale(0.92)" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M8 24 C23 -4 78 -9 99 20 C122 52 105 111 70 124 C34 138 -5 117 -13 82 C-22 52 -8 36 8 24Z" fill="#111"/>
+    <circle cx="35" cy="52" r="7" fill="#fff" stroke="none"/>
+    <circle cx="72" cy="49" r="7" fill="#fff" stroke="none"/>
+    <path d="M20 52 C-18 40 -48 28 -72 15"/><path d="M82 48 C110 27 134 18 164 14"/>
+    <path d="M28 122 C20 153 20 178 10 204"/>
+    <path d="M70 124 C80 154 84 176 96 201"/>
+  </g>
+      <path d="M1030 328 C876 338 742 375 613 430" fill="none" stroke="#e07b25" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+      <text x="402" y="246" transform="rotate(0 402 246)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">正文</text><text x="546" y="486" transform="rotate(0 546 486)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">备注</text><text x="1012" y="228" transform="rotate(0 1012 228)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#d33b2f" letter-spacing="0">搜索</text>
+      <g transform="translate(1200 204) rotate(-2)">
+    <path d="M0 0 C48 -8 124 -3 178 4 C174 38 171 74 176 105 C116 114 48 106 -8 102 C-2 70 5 33 0 0Z" fill="none" stroke="#d33b2f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="18" y="62" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#d33b2f">筛到想要的</text>
+  </g>
+      <text x="1160" y="716" transform="rotate(2 1160 716)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">类型 / 来源 / 日期</text>
+    </g>
+  </svg>

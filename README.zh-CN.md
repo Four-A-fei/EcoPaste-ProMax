@@ -34,18 +34,87 @@ Rust-First 重构版仅支持 macOS 与 Windows。
 
 旧版 EcoPaste 曾支持 Linux，但重构版已经放弃 Linux 支持，并且暂不计划重新支持 Linux。如果你需要 Linux 支持，请继续使用旧版发布线。
 
-## 功能
+## 功能导览
 
-- 采集纯文本、HTML、RTF、图片、文件和文件夹等剪贴板内容。
-- 使用 SQLite FTS5 搜索剪贴板正文与备注。
-- 按来源应用和内容类型过滤历史记录。
-- 识别并跳过高置信敏感内容，例如私钥、服务 Token、AWS Key 和 JWT。
-- 在独立预览窗口中查看文本、图片和文件记录。
-- 支持粘贴、复制、复制为纯文本、定位文件、打开链接、添加备注、置顶、收藏、删除，以及将记录拖出到其它应用。
-- 通过收藏、置顶、备注、自定义分组和可配置快捷动作组织历史记录。
-- 可调整采集顺序、大小限制、保留策略、展示密度、列表排序和窗口行为。
-- 支持导出和导入 `.ecopastebak` 备份，包括加密备份包。
-- 剪贴板数据、资源缓存和设置均保存在本机。
+### 剪贴板内容采集
+
+EcoPasteProMax 会自动采集纯文本、HTML、RTF、图片、文件和文件夹等剪贴板内容，并把历史记录保存在本机，方便之后再次查找和复用。
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/01-clipboard-capture.svg" alt="剪贴板内容采集配图" width="720" />
+</p>
+
+### 历史搜索与筛选
+
+历史记录支持 SQLite FTS5 全文搜索，可以检索剪贴板正文和备注；也可以按来源应用、内容类型、自定义分组、收藏和日期缩小范围。
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/02-search-filter.svg" alt="历史搜索与筛选配图" width="720" />
+</p>
+
+### 快速复用内容
+
+记录可以直接粘贴、复制、复制为纯文本、打开链接、定位文件，也可以拖出到其它应用，让常用内容不再反复翻找。
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/03-quick-reuse.svg" alt="快速复用内容配图" width="720" />
+</p>
+
+### 内容管理
+
+通过收藏、置顶、备注、自定义分组和可配置快捷动作，用户可以把临时记录、常用内容和重点资料分开整理。
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/04-content-management.svg" alt="内容管理配图" width="720" />
+</p>
+
+### 独立预览
+
+文本、图片和文件记录可以在独立预览窗口中查看，先确认内容再粘贴，减少误选和重复打开文件的成本。
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/05-preview.svg" alt="独立预览配图" width="720" />
+</p>
+
+### 隐私与安全
+
+软件会识别并跳过高置信敏感内容，例如私钥、服务 Token、AWS Key 和 JWT，降低敏感信息被写入历史记录的风险。
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/06-privacy-security.svg" alt="隐私与安全配图" width="720" />
+</p>
+
+### 窗口与快捷键体验
+
+可以通过快捷键呼出粘贴面板。当前面板将“全部”、“收藏”和用户自定义分组放在左侧边栏，并保留 Tab / Shift+Tab 的键盘筛选体验。
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/07-window-shortcuts.svg" alt="窗口与快捷键配图" width="720" />
+</p>
+
+### 日期筛选
+
+日期筛选按月展示，有剪贴内容的日期会显示状态点；选择某一天后立即筛选对应历史记录，适合按时间找回内容。
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/08-date-filter.svg" alt="日期筛选配图" width="720" />
+</p>
+
+### 备份与迁移
+
+支持导出和导入 `.ecopastebak` 备份文件，并支持加密备份，方便在重装、迁移或恢复时保留关键数据。
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/09-backup-migration.svg" alt="备份与迁移配图" width="720" />
+</p>
+
+### 设置与本地化
+
+用户可以调整采集顺序、大小限制、保留策略、展示密度、列表排序、窗口行为、主题语言和系统入口，让软件贴合自己的使用方式。
+
+<p align="center">
+  <img src="./assets/ecopastepromax-feature-illustrations/10-settings-localization.svg" alt="设置与本地化配图" width="720" />
+</p>
 
 ## 1.0.1 近期更新
 

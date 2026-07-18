@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+    <defs>
+      <marker id="arrow" markerWidth="14" markerHeight="14" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+        <path d="M2 2 L10 6 L2 10" fill="none" stroke="#e07b25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+      <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="1" seed="7"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    </defs>
+    <rect width="1600" height="900" fill="#fff"/>
+    <g filter="url(#wobble)">
+      <path d="M374 196 C616 154 910 164 1168 210 C1140 386 1144 548 1188 716 C906 764 612 758 342 708 C374 544 382 368 374 196Z" fill="none" stroke="#111" stroke-width="8"/>
+      <circle cx="566" cy="388" r="68" fill="none" stroke="#111" stroke-width="7"/>
+      <path d="M566 388 L606 342" stroke="#e07b25" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="782" cy="388" r="68" fill="none" stroke="#111" stroke-width="7"/>
+      <path d="M782 388 L742 336" stroke="#e07b25" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="998" cy="388" r="68" fill="none" stroke="#111" stroke-width="7"/>
+      <path d="M998 388 L1038 424" stroke="#e07b25" stroke-width="7" stroke-linecap="round"/>
+      <path d="M512 578 C650 552 876 560 1028 590" stroke="#111" stroke-width="5" fill="none"/>
+      <path d="M514 654 C664 632 870 638 1038 666" stroke="#111" stroke-width="5" fill="none"/>
+      <g transform="translate(690 540) scale(0.82)" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M8 24 C23 -4 78 -9 99 20 C122 52 105 111 70 124 C34 138 -5 117 -13 82 C-22 52 -8 36 8 24Z" fill="#111"/>
+    <circle cx="35" cy="52" r="7" fill="#fff" stroke="none"/>
+    <circle cx="72" cy="49" r="7" fill="#fff" stroke="none"/>
+    <path d="M82 58 C126 52 146 36 164 18"/><path d="M18 60 C-12 82 -32 104 -44 132"/>
+    <path d="M28 122 C20 153 20 178 10 204"/>
+    <path d="M70 124 C80 154 84 176 96 201"/>
+  </g>
+      <text x="514" y="298" transform="rotate(0 514 298)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">主题</text><text x="732" y="298" transform="rotate(0 732 298)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">语言</text><text x="930" y="298" transform="rotate(0 930 298)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">行为</text>
+      <g transform="translate(1048 548) rotate(-2)">
+    <path d="M0 0 C48 -8 124 -3 178 4 C174 38 171 74 176 105 C116 114 48 106 -8 102 C-2 70 5 33 0 0Z" fill="none" stroke="#d33b2f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="18" y="62" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#d33b2f">1.0.1</text>
+  </g>
+      <text x="488" y="746" transform="rotate(-2 488 746)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#d33b2f" letter-spacing="0">黑子特供版</text>
+    </g>
+  </svg>

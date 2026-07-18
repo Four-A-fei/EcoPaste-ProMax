@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+    <defs>
+      <marker id="arrow" markerWidth="14" markerHeight="14" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+        <path d="M2 2 L10 6 L2 10" fill="none" stroke="#e07b25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+      <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="1" seed="7"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    </defs>
+    <rect width="1600" height="900" fill="#fff"/>
+    <g filter="url(#wobble)">
+      <path d="M236 214 C500 170 820 176 1086 220 C1058 388 1062 542 1104 708 C820 752 504 748 224 700 C260 540 266 382 236 214Z" fill="none" stroke="#111" stroke-width="8"/>
+      <path d="M298 288 C318 466 314 586 288 674" stroke="#111" stroke-width="5" fill="none"/>
+      <path d="M338 320 C402 300 482 310 526 336" stroke="#111" stroke-width="5" fill="none"/>
+      <path d="M338 430 C410 406 486 418 534 448" stroke="#111" stroke-width="5" fill="none"/>
+      <path d="M342 546 C404 526 476 532 532 560" stroke="#111" stroke-width="5" fill="none"/>
+      <path d="M640 628 C830 592 1064 612 1260 650 C1248 724 1246 776 1266 828 C1048 852 810 846 616 812 C638 750 642 688 640 628Z" fill="none" stroke="#111" stroke-width="7"/>
+      <g transform="translate(726 462) scale(0.92)" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M8 24 C23 -4 78 -9 99 20 C122 52 105 111 70 124 C34 138 -5 117 -13 82 C-22 52 -8 36 8 24Z" fill="#111"/>
+    <circle cx="35" cy="52" r="7" fill="#fff" stroke="none"/>
+    <circle cx="72" cy="49" r="7" fill="#fff" stroke="none"/>
+    <path d="M82 58 C126 52 146 36 164 18"/><path d="M18 60 C-12 82 -32 104 -44 132"/>
+    <path d="M28 122 C20 153 20 178 10 204"/>
+    <path d="M70 124 C80 154 84 176 96 201"/>
+  </g>
+      <path d="M720 690 C832 672 978 684 1090 708" stroke="#111" stroke-width="5" fill="none"/>
+      <text x="760" y="760" transform="rotate(0 760 760)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="46" fill="#d33b2f" letter-spacing="0">Tab</text>
+      <path d="M816 600 C782 560 756 530 734 500" fill="none" stroke="#e07b25" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+      <text x="376" y="270" transform="rotate(0 376 270)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">全部</text><text x="374" y="382" transform="rotate(0 374 382)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">收藏</text><text x="360" y="498" transform="rotate(0 360 498)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">自定义</text>
+      <g transform="translate(1134 288) rotate(-2)">
+    <path d="M0 0 C48 -8 124 -3 178 4 C174 38 171 74 176 105 C116 114 48 106 -8 102 C-2 70 5 33 0 0Z" fill="none" stroke="#d33b2f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="18" y="62" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#d33b2f">快捷呼出</text>
+  </g>
+      <text x="1036" y="568" transform="rotate(-4 1036 568)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="28" fill="#e07b25" letter-spacing="0">Shift+Tab 类型</text>
+    </g>
+  </svg>

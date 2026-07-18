@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+    <defs>
+      <marker id="arrow" markerWidth="14" markerHeight="14" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+        <path d="M2 2 L10 6 L2 10" fill="none" stroke="#e07b25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+      <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="1" seed="7"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    </defs>
+    <rect width="1600" height="900" fill="#fff"/>
+    <g filter="url(#wobble)">
+      <path d="M242 330 C350 296 502 302 610 344 C596 472 604 582 632 690 C482 734 348 724 224 680 C252 560 264 438 242 330Z" fill="none" stroke="#111" stroke-width="7"/>
+      <path d="M312 416 C392 392 500 402 564 428" stroke="#111" stroke-width="5" fill="none"/>
+      <path d="M312 530 C420 504 502 516 568 542" stroke="#111" stroke-width="5" fill="none"/>
+      <path d="M940 286 C1082 252 1266 266 1392 318 C1368 476 1374 596 1410 722 C1260 768 1082 758 916 706 C946 572 952 432 940 286Z" fill="none" stroke="#111" stroke-width="8"/>
+      <path d="M1032 270 C1052 212 1254 214 1274 278" fill="none" stroke="#111" stroke-width="8"/>
+      <path d="M1126 478 C1168 448 1222 452 1256 488 C1252 548 1254 590 1268 640 C1216 660 1150 654 1108 628 C1124 576 1126 526 1126 478Z" fill="none" stroke="#d33b2f" stroke-width="6"/>
+      <g transform="translate(680 466) scale(1)" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M8 24 C23 -4 78 -9 99 20 C122 52 105 111 70 124 C34 138 -5 117 -13 82 C-22 52 -8 36 8 24Z" fill="#111"/>
+    <circle cx="35" cy="52" r="7" fill="#fff" stroke="none"/>
+    <circle cx="72" cy="49" r="7" fill="#fff" stroke="none"/>
+    <path d="M20 52 C-18 40 -48 28 -72 15"/><path d="M82 48 C110 27 134 18 164 14"/>
+    <path d="M28 122 C20 153 20 178 10 204"/>
+    <path d="M70 124 C80 154 84 176 96 201"/>
+  </g>
+      <path d="M618 488 C734 456 826 462 936 520" fill="none" stroke="#e07b25" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+      <text x="302" y="728" transform="rotate(0 302 728)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">本地数据</text><text x="1060" y="732" transform="rotate(0 1060 732)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">.ecopastebak</text><text x="1122" y="446" transform="rotate(0 1122 446)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#d33b2f" letter-spacing="0">加密</text>
+      <g transform="translate(690 220) rotate(-2)">
+    <path d="M0 0 C48 -8 124 -3 178 4 C174 38 171 74 176 105 C116 114 48 106 -8 102 C-2 70 5 33 0 0Z" fill="none" stroke="#d33b2f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="18" y="62" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#d33b2f">导入 / 导出</text>
+  </g>
+    </g>
+  </svg>

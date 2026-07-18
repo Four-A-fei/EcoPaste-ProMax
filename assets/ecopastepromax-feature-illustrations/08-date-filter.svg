@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+    <defs>
+      <marker id="arrow" markerWidth="14" markerHeight="14" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+        <path d="M2 2 L10 6 L2 10" fill="none" stroke="#e07b25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+      <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="1" seed="7"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    </defs>
+    <rect width="1600" height="900" fill="#fff"/>
+    <g filter="url(#wobble)">
+      <path d="M362 182 C618 138 918 148 1158 190 C1132 354 1138 546 1180 724 C918 776 608 766 332 716 C368 540 374 354 362 182Z" fill="none" stroke="#111" stroke-width="8"/>
+      <path d="M390 284 C642 244 926 256 1132 302" stroke="#111" stroke-width="6" fill="none"/>
+      <path d="M494 352 C486 478 486 600 510 720" stroke="#111" stroke-width="4" fill="none"/>
+      <path d="M650 330 C638 480 642 612 666 742" stroke="#111" stroke-width="4" fill="none"/>
+      <path d="M808 322 C798 476 800 622 828 744" stroke="#111" stroke-width="4" fill="none"/>
+      <path d="M966 330 C956 486 960 620 984 726" stroke="#111" stroke-width="4" fill="none"/>
+      <path d="M384 448 C616 420 912 430 1150 468" stroke="#111" stroke-width="4" fill="none"/>
+      <path d="M370 590 C632 562 908 570 1164 610" stroke="#111" stroke-width="4" fill="none"/>
+      <circle cx="602" cy="526" r="13" fill="#2f6fd3"/><circle cx="756" cy="392" r="13" fill="#2f6fd3"/><circle cx="1080" cy="548" r="13" fill="#2f6fd3"/><circle cx="920" cy="656" r="13" fill="#2f6fd3"/>
+      <path d="M900 456 C942 434 1014 436 1054 470 C1048 534 1048 578 1064 636 C1006 660 934 656 884 624 C904 566 906 514 900 456Z" fill="none" stroke="#d33b2f" stroke-width="6"/>
+      <g transform="translate(240 492) scale(0.85)" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M8 24 C23 -4 78 -9 99 20 C122 52 105 111 70 124 C34 138 -5 117 -13 82 C-22 52 -8 36 8 24Z" fill="#111"/>
+    <circle cx="35" cy="52" r="7" fill="#fff" stroke="none"/>
+    <circle cx="72" cy="49" r="7" fill="#fff" stroke="none"/>
+    <path d="M20 52 C-18 40 -48 28 -72 15"/><path d="M82 48 C110 27 134 18 164 14"/>
+    <path d="M28 122 C20 153 20 178 10 204"/>
+    <path d="M70 124 C80 154 84 176 96 201"/>
+  </g>
+      <path d="M402 594 C524 574 704 548 890 524" fill="none" stroke="#e07b25" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+      <text x="434" y="246" transform="rotate(0 434 246)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">月视图</text><text x="1064" y="426" transform="rotate(0 1064 426)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#d33b2f" letter-spacing="0">选一天</text><text x="600" y="802" transform="rotate(0 600 802)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">小蓝点 = 有记录</text>
+    </g>
+  </svg>

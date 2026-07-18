@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+    <defs>
+      <marker id="arrow" markerWidth="14" markerHeight="14" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+        <path d="M2 2 L10 6 L2 10" fill="none" stroke="#e07b25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+      <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="1" seed="7"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    </defs>
+    <rect width="1600" height="900" fill="#fff"/>
+    <g filter="url(#wobble)">
+      <path d="M742 174 C842 198 920 250 976 328 C948 472 952 598 986 718 C870 774 724 776 606 720 C636 590 638 456 610 326 C642 260 682 210 742 174Z" fill="none" stroke="#111" stroke-width="8"/>
+      <path d="M710 342 C764 320 830 322 888 350" stroke="#111" stroke-width="6" fill="none"/>
+      <path d="M704 476 C774 444 840 454 902 488" stroke="#111" stroke-width="6" fill="none"/>
+      <g transform="translate(718 472) scale(1.05)" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M8 24 C23 -4 78 -9 99 20 C122 52 105 111 70 124 C34 138 -5 117 -13 82 C-22 52 -8 36 8 24Z" fill="#111"/>
+    <circle cx="35" cy="52" r="7" fill="#fff" stroke="none"/>
+    <circle cx="72" cy="49" r="7" fill="#fff" stroke="none"/>
+    <path d="M82 58 C126 52 146 36 164 18"/><path d="M18 60 C-12 82 -32 104 -44 132"/>
+    <path d="M28 122 C20 153 20 178 10 204"/>
+    <path d="M70 124 C80 154 84 176 96 201"/>
+  </g>
+      <path d="M256 278 C388 306 510 336 616 380" fill="none" stroke="#e07b25" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+      <path d="M286 210 C366 184 454 198 510 238 C494 294 496 342 518 394 C438 416 348 410 280 374 C300 322 300 260 286 210Z" fill="none" stroke="#d33b2f" stroke-width="6"/>
+      <path d="M326 253 L470 354" stroke="#d33b2f" stroke-width="7" stroke-linecap="round"/>
+      <path d="M470 252 L326 354" stroke="#d33b2f" stroke-width="7" stroke-linecap="round"/>
+      <text x="318" y="180" transform="rotate(0 318 180)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#d33b2f" letter-spacing="0">私钥 / Token</text><text x="686" y="216" transform="rotate(0 686 216)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">守门</text><g transform="translate(1052 316) rotate(-2)">
+    <path d="M0 0 C48 -8 124 -3 178 4 C174 38 171 74 176 105 C116 114 48 106 -8 102 C-2 70 5 33 0 0Z" fill="none" stroke="#d33b2f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="18" y="62" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#d33b2f">敏感跳过</text>
+  </g>
+      <text x="1070" y="648" transform="rotate(0 1070 648)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">只留下安全内容</text>
+    </g>
+  </svg>

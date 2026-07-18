@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+    <defs>
+      <marker id="arrow" markerWidth="14" markerHeight="14" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+        <path d="M2 2 L10 6 L2 10" fill="none" stroke="#e07b25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+      <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="1" seed="7"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    </defs>
+    <rect width="1600" height="900" fill="#fff"/>
+    <g filter="url(#wobble)">
+      <path d="M274 230 C536 188 880 192 1168 236 C1142 388 1146 548 1182 704 C878 750 532 738 236 692 C272 538 282 384 274 230Z" fill="none" stroke="#111" stroke-width="8"/>
+      <path d="M278 388 C548 354 884 360 1152 396" stroke="#111" stroke-width="6" fill="none"/>
+      <path d="M268 548 C558 518 886 524 1166 562" stroke="#111" stroke-width="6" fill="none"/>
+      <path d="M532 224 C520 380 520 532 548 710" stroke="#111" stroke-width="6" fill="none"/>
+      <path d="M828 218 C812 382 816 538 842 720" stroke="#111" stroke-width="6" fill="none"/>
+      <g transform="translate(626 496) scale(0.95)" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M8 24 C23 -4 78 -9 99 20 C122 52 105 111 70 124 C34 138 -5 117 -13 82 C-22 52 -8 36 8 24Z" fill="#111"/>
+    <circle cx="35" cy="52" r="7" fill="#fff" stroke="none"/>
+    <circle cx="72" cy="49" r="7" fill="#fff" stroke="none"/>
+    <path d="M20 52 C-18 40 -48 28 -72 15"/><path d="M82 48 C110 27 134 18 164 14"/>
+    <path d="M28 122 C20 153 20 178 10 204"/>
+    <path d="M70 124 C80 154 84 176 96 201"/>
+  </g>
+      <path d="M596 390 C656 374 728 380 782 404 C770 464 770 510 790 562 C722 582 652 574 586 550 C606 494 606 448 596 390Z" fill="none" stroke="#111" stroke-width="5"/>
+      <path d="M978 295 L1002 342 L1054 350 L1016 386 L1025 438 L978 412 L930 438 L942 386 L904 350 L956 342Z" fill="none" stroke="#d33b2f" stroke-width="5"/>
+      <path d="M402 284 C425 260 452 260 474 284 C468 346 472 397 486 444 C446 436 416 432 382 446 C394 390 394 334 402 284Z" fill="none" stroke="#e07b25" stroke-width="5"/>
+      <text x="360" y="480" transform="rotate(0 360 480)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#e07b25" letter-spacing="0">置顶</text><text x="934" y="476" transform="rotate(0 934 476)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#d33b2f" letter-spacing="0">收藏</text><text x="646" y="620" transform="rotate(0 646 620)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">备注</text><text x="896" y="650" transform="rotate(0 896 650)" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="30" fill="#2f6fd3" letter-spacing="0">分组</text>
+    </g>
+  </svg>
